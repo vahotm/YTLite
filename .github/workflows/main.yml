@@ -51,6 +51,12 @@ on:
         required: true
         type: string
 
+      tweak_url:
+        description: "Direct URL to a custom YTLite .deb file (takes priority over tweak_version if set)"
+        default: ""
+        required: false
+        type: string
+
       display_name:
         description: "App Name (Optional)"
         default: "YouTube"
@@ -84,6 +90,7 @@ jobs:
       enable_ytabc: ${{ inputs.enable_ytabc }}
       enable_demc: ${{ inputs.enable_demc }}
       tweak_version: ${{ inputs.tweak_version }}
+      tweak_url: ${{ inputs.tweak_url }}
 
   package:
     name: Package IPA
