@@ -57,6 +57,11 @@ on:
         required: false
         type: string
 
+      patch_version:
+        description: "Patch version string from the patched dylib (e.g. v10)"
+        required: true
+        type: string
+
       display_name:
         description: "App Name (Optional)"
         default: "YouTube"
@@ -134,7 +139,7 @@ jobs:
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: ytp-${{ github.run_number }}
+          tag_name: patch_${{ inputs.patch_version }}_${{ github.run_number }}
           name: YouTubePlus v${{ github.event.inputs.tweak_version }} (${{ github.run_number }})
           files: YouTubePlus_${{ github.event.inputs.tweak_version }}.ipa
           draft: true
